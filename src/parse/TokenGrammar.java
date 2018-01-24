@@ -9,22 +9,22 @@ public class TokenGrammar implements wrangLR.runtime.MessageObject {
 		errorMsg = em;
 	}
 	private ErrorMsg errorMsg;
-	
+
 	public void error(int pos, String msg) {
 		errorMsg.error(pos, msg);
 	}
-	
+
 	public void warning(int pos, String msg) {
 		errorMsg.warning(pos, msg);
 	}
-	
+
 	public void reportTok(int pos, String s) {
 		System.out.println(errorMsg.lineAndChar(pos)+": "+s);
 	}
 
 
 //: start ::= ws* token*
-	
+
 
 //: token ::= # `boolean =>
 public void sawBoolean(int pos) {
@@ -343,22 +343,22 @@ public void sawMinusMinus(int pos) {
 public void sawSlash(int pos) {
      reportTok(pos, "`/");
 }
-	
+
 //: token ::= # ID =>
 public void identifier(int pos, String s) {
 	reportTok(pos, "identifier: "+s);
 }
-	
+
 //: token ::= # INTLIT =>
 public void intLit(int pos, int n) {
 	reportTok(pos, "integer literal: "+n);
 }
-	
+
 //: token ::= # STRINGLIT =>
 public void stringLit(int pos, String s) {
 	reportTok(pos, "string literal: "+s);
 }
-	
+
 //: token ::= # CHARLIT =>
 public void charLit(int pos, int n) {
 	reportTok(pos, "character literal with ASCII value: "+n);
@@ -376,11 +376,48 @@ public void charLit(int pos, int n) {
 //: reserved ::= `class
 //: `else ::= "else" !idChar ws*
 //: reserved ::= `else
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `boolean ::= "boolean" !idChar ws*
+//: reserved ::= `boolean
+//: `false ::= "false" !idChar ws*
+//: reserved ::= `false
+//: `extends ::= "extends" !idChar ws*
+//: reserved ::= `extends
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
+//: `break ::= "break" !idChar ws*
+//: reserved ::= `break
 
+//: `else ::= "else" !idChar ws*
+//: reserved ::= `else
 //special-token characters
 //: `!= ::= "!=" ws*
 //: `* ::= "*" ws*
-
+//: `class ::= "class" !idChar ws*
+//: reserved ::= `class
+//: `else ::= "else" !idChar ws*
+//: reserved ::= `else
 // a numeric literal
 //: INTLIT ::= # intLit2 ws* =>
 public int convertToInt(int pos, String s) {
